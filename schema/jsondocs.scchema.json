@@ -22,12 +22,7 @@
       }
     },
     "classes": {
-      "type": "object",
-      "patternProperties": {
-        ".*": {
-          "$ref": "#/definitions/classes"
-        }
-      }
+      "$ref": "#/definitions/classes"
     }
   },
   "definitions": {
@@ -105,7 +100,10 @@
           "description": "The name of the class"
         },
         "inherits": {
-          "type": "string",
+          "anyOf": [
+            {"type": "string"},
+            {"type": "null"}
+          ],
           "description": "The name of the class that this class inherits (if any - can be null)"
         },
         "desc": {
@@ -113,10 +111,18 @@
           "description": "The verbal description of what this class is or represents"
         },
         "functions": {
-          "$ref": "#/definitions/functions"
+          "patternProperties": {
+            ".*": {
+              "$ref": "#/definitions/functions"
+            }
+          }
         },
         "variables": {
-          "$ref": "#/definitions/variables"
+          "patternProperties": {
+            ".*": {
+              "$ref": "#/definitions/variables"
+            }
+          }
         }
       }
     },

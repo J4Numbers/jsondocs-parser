@@ -76,8 +76,28 @@
       "class_name": "Bar",
       "inherits": "Foo",
       "desc": "Bar is a class",
-      "functions": {},
-      "variables": {}
+      "functions": {
+        "foo_bar": [
+          {
+            "name": "foo_bar",
+            "desc": "Do another thing",
+            "params": [],
+            "return": {
+              "type": "Boolean",
+              "desc": "A thing"
+            }
+          }
+        ]
+      },
+      "variables": {
+        "var_b": [
+          {
+            "name": "var_b",
+            "type": "int",
+            "desc": "This is an integer"
+          }
+        ]
+      }
     }
   }
 }
