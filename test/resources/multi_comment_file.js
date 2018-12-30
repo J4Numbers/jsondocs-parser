@@ -41,6 +41,21 @@ time. However, it is still a valid thing, so... yeah.
  */
 
 /*
+[!<function_a>+
+
+This is a function written in the key of c#
+
+@param <string>:<var_a> This is the first parameter
+@param <string>:<var_b> This is the second parameter
+                        which has a longer description
+@param <integer>:<var_c> This is the third parameter
+
+@return <string> something arbitrary is returned here
+
++!]
+ */
+
+/*
 [!This is a
 multi
 line
