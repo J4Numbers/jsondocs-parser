@@ -23,6 +23,7 @@
  */
 
 const logger = require('./lib/logger')();
+const directoryScanner = require('./lib/directory_scan');
 const argv = require('minimist')(
   process.argv.slice(2),
   {
@@ -34,6 +35,7 @@ const argv = require('minimist')(
     default: {
       inc: ['.'],
       ext: ['.*[.].*'],
+      ignore: [],
       out: 'docs.jsondocs.json'
     }
   }
@@ -44,4 +46,21 @@ if (typeof(argv.out) !== 'string') {
   process.exit(1);
 }
 
-console.log(argv);
+if (typeof(argv.inc) !== 'object') {
+  logger.debug('Converting single inclusion object to an array');
+  argv.inc = [argv.inc];
+}
+
+if (typeof(argv.ext) !== 'object') {
+  logger.debug('Converting single extension object to an array');
+  argv.ext = [argv.ext];
+}
+
+if (typeof(argv.ignore) !== 'object') {
+  logger.debug('Converting single ignore item to an array');
+  argv.ignore = [argv.ignore];
+}
+
+logger.info(argv);
+
+logger.info(directoryScanner(argv.inc, argv.ext, argv.ignore));
