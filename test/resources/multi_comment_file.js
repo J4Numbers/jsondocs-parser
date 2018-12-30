@@ -22,47 +22,13 @@
  * SOFTWARE.
  */
 
-const logger = require('./lib/logger')();
-const directoryScanner = require('./lib/directory_scan');
-const docExtractor = require('./lib/extract_basic_docs');
-const argv = require('minimist')(
-  process.argv.slice(2),
-  {
-    alias: {
-      inc: ['i', 'include'],
-      ext: ['extension', 'e'],
-      out: ['o', 'output']
-    },
-    default: {
-      inc: ['.'],
-      ext: ['.*[.].*'],
-      ignore: [],
-      out: 'docs.jsondocs.json'
-    }
-  }
-);
+/*
+[!Hello World!]
+ */
 
-if (typeof(argv.out) !== 'string') {
-  logger.error('Only one output option allowed');
-  process.exit(1);
-}
-
-if (typeof(argv.inc) !== 'object') {
-  logger.debug('Converting single inclusion object to an array');
-  argv.inc = [argv.inc];
-}
-
-if (typeof(argv.ext) !== 'object') {
-  logger.debug('Converting single extension object to an array');
-  argv.ext = [argv.ext];
-}
-
-if (typeof(argv.ignore) !== 'object') {
-  logger.debug('Converting single ignore item to an array');
-  argv.ignore = [argv.ignore];
-}
-
-let filesToScan = directoryScanner(argv.inc, argv.ext, argv.ignore);
-let matchesFound = docExtractor(filesToScan);
-
-logger.info(matchesFound);
+/*
+[!This is a
+multi
+line
+comment!]
+ */

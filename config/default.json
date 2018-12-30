@@ -1,4 +1,10 @@
 {
+  "docs": {
+    "general": {
+      "start": "\\[!",
+      "end": "!\\]"
+    }
+  },
   "logger": {
     "level": "info"
   }
