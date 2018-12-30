@@ -71,6 +71,15 @@ This is a class
  */
 
 /*
+[!<Foo>@<var_a:string>*
+
+This is a global variable within a class that is accessible from
+within the class
+
+*@!]
+ */
+
+/*
 [!<Bar>@
 
 This is a class that inherits from Foo
