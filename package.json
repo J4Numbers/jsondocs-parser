@@ -1,0 +1,24 @@
+{
+  "name": "jsondocs-parser",
+  "version": "0.0.1",
+  "description": "A parser that will convert documentation held within a codebase into a machine-readable format",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m4numbers/jsondocs-parser.git"
+  },
+  "keywords": [
+    "json",
+    "jsondocs",
+    "parser"
+  ],
+  "author": "Matthew D. Ball <m4numbers@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/m4numbers/jsondocs-parser/issues"
+  },
+  "homepage": "https://github.com/m4numbers/jsondocs-parser#readme"
+}
