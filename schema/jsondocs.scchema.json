@@ -1,0 +1,160 @@
+{
+  "$id": "https://m4numbers.co.uk/schemas/jsondocs.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "An object containing documentation on an object oriented or functional codebase.",
+  "title": "Json Documentation",
+  "type": "object",
+  "properties": {
+    "variables": {
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "$ref": "#/definitions/variables"
+        }
+      }
+    },
+    "functions": {
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "$ref": "#/definitions/functions"
+        }
+      }
+    },
+    "classes": {
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "$ref": "#/definitions/classes"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "variables": {
+      "description": "A list of variables with a single given name",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/single_var"
+      }
+    },
+    "single_var": {
+      "description": "A single global or local variable that is being described",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the variable"
+        },
+        "type": {
+          "type": "string",
+          "description": "The logical type of the variable"
+        },
+        "desc": {
+          "type": "string",
+          "description": "The description of what the variable represents"
+        }
+      }
+    },
+    "functions": {
+      "description": "A list of functions with a single given name",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/single_function"
+      }
+    },
+    "single_function": {
+      "description": "A single global or static function which is being described",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the function"
+        },
+        "desc": {
+          "type": "string",
+          "description": "A description of what the function does"
+        },
+        "params": {
+          "type": "array",
+          "description": "A list of all the parameters that the function takes",
+          "items": {
+            "$ref": "#/definitions/function_parameter"
+          }
+        },
+        "return": {
+          "$ref": "#/definitions/return"
+        }
+      }
+    },
+    "classes": {
+      "description": "A set of all unique classes within the project",
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "$ref": "#/definitions/single_class"
+        }
+      }
+    },
+    "single_class": {
+      "description": "The description of a single class within the project",
+      "type": "object",
+      "properties": {
+        "class_name": {
+          "type": "string",
+          "description": "The name of the class"
+        },
+        "inherits": {
+          "type": "string",
+          "description": "The name of the class that this class inherits (if any - can be null)"
+        },
+        "desc": {
+          "type": "string",
+          "description": "The verbal description of what this class is or represents"
+        },
+        "functions": {
+          "$ref": "#/definitions/functions"
+        },
+        "variables": {
+          "$ref": "#/definitions/variables"
+        }
+      }
+    },
+    "function_parameter": {
+      "description": "A single parameter within a function",
+      "type": "object",
+      "properties": {
+        "pos": {
+          "type": "integer",
+          "description": "A zero-indexed number of where the parameter appears in the function call"
+        },
+        "type": {
+          "type": "string",
+          "description": "The logical type that this parameter is expected to be"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of this parameter"
+        },
+        "desc": {
+          "type": "string",
+          "description": "A verbal description of what this parameter needs to be or what it needs to represent"
+        }
+      }
+    },
+    "return": {
+      "description": "The item that is returned after the function is called",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The type of the object that is returned"
+        },
+        "desc": {
+          "type": "string",
+          "description": "Describe what the returned object is or represents"
+        }
+      }
+    }
+  }
+}

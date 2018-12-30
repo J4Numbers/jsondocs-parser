@@ -1,0 +1,83 @@
+{
+  "variables": {
+    "var_a": [
+      {
+        "name": "var_a",
+        "type": "String",
+        "desc": "This is a string"
+      }
+    ],
+    "var_b": [
+      {
+        "name": "var_b",
+        "type": "int",
+        "desc": "This is an integer"
+      }
+    ],
+    "var_c": [
+      {
+        "name": "var_c",
+        "type": "string",
+        "desc": "This is another string"
+      },
+      {
+        "name": "var_c",
+        "type": "int",
+        "desc": "This is another int"
+      }
+    ]
+  },
+  "functions": {
+    "do_something": [
+      {
+        "name": "do_something",
+        "desc": "Do a thing",
+        "params": [
+          {
+            "pos": 0,
+            "type": "String",
+            "name": "a",
+            "desc": "A parameter of a function"
+          },
+          {
+            "pos": 1,
+            "type": "int",
+            "name": "b",
+            "desc": "Another parameter of a function"
+          }
+        ],
+        "return": {
+          "type": "Boolean",
+          "desc": "An indicator"
+        }
+      }
+    ],
+    "foo_bar": [
+      {
+        "name": "foo_bar",
+        "desc": "Do another thing",
+        "params": [],
+        "return": {
+          "type": "Boolean",
+          "desc": "A thing"
+        }
+      }
+    ]
+  },
+  "classes": {
+    "Foo": {
+      "class_name": "Foo",
+      "inherits": null,
+      "desc": "Foo is a class",
+      "functions": {},
+      "variables": {}
+    },
+    "Bar": {
+      "class_name": "Bar",
+      "inherits": "Foo",
+      "desc": "Bar is a class",
+      "functions": {},
+      "variables": {}
+    }
+  }
+}
