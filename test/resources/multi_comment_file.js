@@ -80,6 +80,18 @@ within the class
  */
 
 /*
+[!<Foo>@<do_something>+
+
+Do something with the input parameters
+
+@param <integer>:<var_a> do something with this variable
+
+@return <integer> return the variable now that something has been done to it
+
++@!]
+ */
+
+/*
 [!<Bar>@
 
 This is a class that inherits from Foo
