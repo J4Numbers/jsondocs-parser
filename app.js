@@ -25,6 +25,8 @@
 const logger = require('./lib/logger')();
 const directoryScanner = require('./lib/directory_scan');
 const docExtractor = require('./lib/extract_basic_docs');
+const jsondocsGenerator = require('./lib/jsondocs_generator');
+
 const argv = require('minimist')(
   process.argv.slice(2),
   {
@@ -64,5 +66,6 @@ if (typeof(argv.ignore) !== 'object') {
 
 let filesToScan = directoryScanner(argv.inc, argv.ext, argv.ignore);
 let matchesFound = docExtractor(filesToScan);
+let jsonDocs = jsondocsGenerator(matchesFound);
 
-logger.info(matchesFound);
+logger.info(jsonDocs);

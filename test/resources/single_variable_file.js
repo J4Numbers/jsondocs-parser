@@ -25,24 +25,7 @@
 /*
 [!<var_a:string>*
 
-This is the description of a variable named      var_a,
-which is a string
-
+This is another variable named var_a, but it is morally different
+in some way... probably
 *!]
- */
-
-/*
-[!<var_b:integer>*
-
-Variable b is a bit different and is an integer instead this
-time. However, it is still a valid thing, so... yeah.
-
-*!]
- */
-
-/*
-[!This is a
-multi
-line
-comment!]
  */
