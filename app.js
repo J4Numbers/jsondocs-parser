@@ -29,31 +29,37 @@ const argv = require('minimist')(
     alias: {
       inc: ['i', 'include'],
       ext: ['extension', 'e'],
-      out: ['o', 'output']
+      out: ['o', 'output'],
+      debug: ['d']
     },
     default: {
       inc: ['.'],
       ext: ['.*[.].*'],
       ignore: [],
       out: 'docs.jsondocs.json',
-      'log-level': 'info',
+      debug: false,
       'doc-start': '\\[!',
       'doc-end': '!\\]'
     }
   }
 );
 
-const logger = require('./lib/logger')({level: argv['log-level']});
+const logger = require('./lib/logger')({debug: argv.debug});
 const directoryScanner = require('./lib/directory_scan');
 const docExtractor = require('./lib/extract_basic_docs');
 const jsondocsGenerator = require('./lib/jsondocs_generator');
 const writeToFile = require('./lib/write_to_file');
 
 if (typeof(argv.out) !== 'string') {
-  logger.log('Only one output option allowed');
+  logger.error('Only one output option allowed');
   process.exit(1);
 }
-if (typeof(argv['log-level']) !== 'string') {
+if (typeof(argv['doc-start']) !== 'string') {
+  logger.error('Starting documentation must only be given one option');
+  process.exit(1);
+}
+if (typeof(argv['doc-end']) !== 'string') {
+  logger.error('Ending documentation must only be given one option');
   process.exit(1);
 }
 

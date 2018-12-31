@@ -22,8 +22,7 @@
   },
   "homepage": "https://github.com/m4numbers/jsondocs-parser#readme",
   "dependencies": {
-    "minimist": "^1.2.0",
-    "winston": "^3.1.0"
+    "minimist": "^1.2.0"
   },
   "bin": {
     "jsondocs-parse": "app.js"

@@ -3,63 +3,51 @@
     "var_a": [
       {
         "name": "var_a",
-        "type": "String",
-        "desc": "This is a string"
+        "type": "string",
+        "desc": "This is the description of a variable named var_a, which is a string"
+      },
+      {
+        "name": "var_a",
+        "type": "string",
+        "desc": "This is another variable named var_a, but it is morally different in some way... probably"
       }
     ],
     "var_b": [
       {
         "name": "var_b",
-        "type": "int",
-        "desc": "This is an integer"
-      }
-    ],
-    "var_c": [
-      {
-        "name": "var_c",
-        "type": "string",
-        "desc": "This is another string"
-      },
-      {
-        "name": "var_c",
-        "type": "int",
-        "desc": "This is another int"
+        "type": "integer",
+        "desc": "Variable b is a bit different and is an integer instead this time. However, it is still a valid thing, so... yeah."
       }
     ]
   },
   "functions": {
-    "do_something": [
+    "function_a": [
       {
-        "name": "do_something",
-        "desc": "Do a thing",
+        "name": "function_a",
+        "desc": "This is a function written in the key of c#",
         "params": [
           {
             "pos": 0,
-            "type": "String",
-            "name": "a",
-            "desc": "A parameter of a function"
+            "type": "string",
+            "name": "var_a",
+            "desc": "This is the first parameter"
           },
           {
             "pos": 1,
-            "type": "int",
-            "name": "b",
-            "desc": "Another parameter of a function"
+            "type": "string",
+            "name": "var_b",
+            "desc": "This is the second parameter which has a longer description"
+          },
+          {
+            "pos": 2,
+            "type": "integer",
+            "name": "var_c",
+            "desc": "This is the third parameter"
           }
         ],
         "return": {
-          "type": "Boolean",
-          "desc": "An indicator"
-        }
-      }
-    ],
-    "foo_bar": [
-      {
-        "name": "foo_bar",
-        "desc": "Do another thing",
-        "params": [],
-        "return": {
-          "type": "Boolean",
-          "desc": "A thing"
+          "type": "string",
+          "desc": "something arbitrary is returned here"
         }
       }
     ]
@@ -68,36 +56,43 @@
     "Foo": {
       "class_name": "Foo",
       "inherits": null,
-      "desc": "Foo is a class",
-      "functions": {},
-      "variables": {}
+      "desc": "This is a class",
+      "variables": {
+        "var_a": [
+          {
+            "name": "var_a",
+            "type": "string",
+            "desc": "This is a global variable within a class that is accessible from within the class"
+          }
+        ]
+      },
+      "functions": {
+        "do_something": [
+          {
+            "name": "do_something",
+            "desc": "Do something with the input parameters",
+            "params": [
+              {
+                "pos": 0,
+                "type": "integer",
+                "name": "var_a",
+                "desc": "do something with this variable"
+              }
+            ],
+            "return": {
+              "type": "integer",
+              "desc": "return the variable now that something has been done to it"
+            }
+          }
+        ]
+      }
     },
     "Bar": {
       "class_name": "Bar",
       "inherits": "Foo",
-      "desc": "Bar is a class",
-      "functions": {
-        "foo_bar": [
-          {
-            "name": "foo_bar",
-            "desc": "Do another thing",
-            "params": [],
-            "return": {
-              "type": "Boolean",
-              "desc": "A thing"
-            }
-          }
-        ]
-      },
-      "variables": {
-        "var_b": [
-          {
-            "name": "var_b",
-            "type": "int",
-            "desc": "This is an integer"
-          }
-        ]
-      }
+      "desc": "This is a class that inherits from Foo",
+      "variables": {},
+      "functions": {}
     }
   }
 }
