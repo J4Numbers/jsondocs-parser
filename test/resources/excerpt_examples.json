@@ -1,0 +1,43 @@
+{
+  "no_items": [],
+  "no_valid_items": [
+    "[! hi !]",
+    "[! this !]",
+    "[! is !]",
+    "[! fun! !]"
+  ],
+  "single_variable": [
+    "[!<var_a:string>*\nThis is a description of var_a\n*!]"
+  ],
+  "single_variable_result": {
+    "var_a": [{
+      "name": "var_a",
+      "type": "string",
+      "desc": "TRANSLATED"
+    }]
+  },
+  "multiple_identical_variables": [
+    "[!<var_a:string>*\nFirst variable found\n*!]",
+    "[!<var_a:string>*\nSecond variable found\n*!]",
+    "[!<var_a:integer>*\nThird variable found\n*!]"
+  ],
+  "multiple_identical_variables_result": {
+    "var_a": [
+      {
+        "name": "var_a",
+        "type": "string",
+        "desc": "TRANSLATED"
+      },
+      {
+        "name": "var_a",
+        "type": "string",
+        "desc": "TRANSLATED"
+      },
+      {
+        "name": "var_a",
+        "type": "integer",
+        "desc": "TRANSLATED"
+      }
+    ]
+  }
+}

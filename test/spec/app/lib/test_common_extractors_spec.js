@@ -24,7 +24,7 @@
 
 const Module = require('../../../../lib/common_extractors');
 
-describe('common_extractors.js', () => {
+describe('lib/common_extractors.js', () => {
   describe('regexSwapSpaces', () => {
     it('should do nothing if only single-spaced strings exist', () => {
       const input = 'This is a test';

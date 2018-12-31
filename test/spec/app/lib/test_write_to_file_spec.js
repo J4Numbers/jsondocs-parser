@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2018 $user.name
+ * Copyright (c) 2018 M4Numbers <m4numbers@gmail.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,7 +25,7 @@
 const moduleUnderTest = '../../../../lib/write_to_file';
 const proxyquire = require('proxyquire');
 
-describe('write_to_file.js', () => {
+describe('lib/write_to_file.js', () => {
   let Module;
   let fakeFileWriter;
   beforeEach(() => {
