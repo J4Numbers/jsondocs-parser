@@ -14,7 +14,7 @@ jsondocs-parse
 ```
 
 By default, this will scan your current directory for all files, then look for
-comments in every file it finds (see [Writing comments](#Writing comments to be parsed)).
+comments in every file it finds (see [Writing comments](#Writing-comments-to-be-parsed)).
 
 Once it has this compiled list of documentation, it will then dump the compiled
 list into a json file (this is set to `docs.jsondocs.json` by default). This can
@@ -121,8 +121,8 @@ this parser:
  * The name of the class
  * A description of the class in general
  * What this class inherits if anything (optional)
- * The functions within the class (see [Class Functions](#Class Functions))
- * The variables within the class (see [Class Variables](#Class Variables))
+ * The functions within the class (see [Class Functions](#Class-functions))
+ * The variables within the class (see [Class Variables](#Class-variables))
 
 The class header itself can be documented as follows:
 
@@ -136,7 +136,7 @@ CLASS_DESCRIPTION
 @!]
 ```
 
-#### Class Functions
+#### Class functions
 
 The documentation for a class-scoped function is made up of the same four
 key points as a normal function (see [Functions](#Functions)). The syntax for
@@ -155,7 +155,7 @@ FUNCTION_DESCRIPTION
 +@!]
 ```
 
-#### Class Variables
+#### Class variables
 
 The documentation for a class-scoped variable is made up of the same three
 key points as a normal variable (see [Variables](#Variables)). The syntax for
