@@ -63,4 +63,74 @@ describe('common_extractors.js', () => {
       expect(Module.regexExtractDescription(input)).to.equal('This is a prepared description');
     });
   });
+
+  describe('regexExtractParameters', () => {
+    it('should extract nothing when there are no parameters to extract', () => {
+      const input = 'This is a description with no parameters';
+      expect(Module.regexExtractParameters(input)).to.deep.equal([]);
+    });
+
+    it('should extract one parameter when there is one to extract', () => {
+      const input = 'Parameter following\n@param <string>:<var> description of var\n';
+      expect(Module.regexExtractParameters(input)).to.deep.equal([{
+        pos: 0,
+        type: 'string',
+        name: 'var',
+        desc: 'description of var'
+      }]);
+    });
+
+    it('should extract multiple parameters when there are multiple', () => {
+      const input = 'something\n@param <string>:<var_a> description of a\n'
+                  + '@param <integer>:<var_b> description of b\n'
+                  + '@param <boolean>:<var_c> description of c\n';
+      expect(Module.regexExtractParameters(input)).to.deep.equal([
+        {
+          pos: 0,
+          type: 'string',
+          name: 'var_a',
+          desc: 'description of a'
+        },
+        {
+          pos: 1,
+          type: 'integer',
+          name: 'var_b',
+          desc: 'description of b'
+        },
+        {
+          pos: 2,
+          type: 'boolean',
+          name: 'var_c',
+          desc: 'description of c'
+        }
+      ]);
+    });
+  });
+
+  describe('regexExtractInherits', () => {
+    it('should return null when no inherits are present', () => {
+      const input = 'This has no inherits clause';
+      expect(Module.regexExtractInherits(input)).to.be.null;
+    });
+
+    it('should return the inherited name when it is present', () => {
+      const input = 'Inherits following\n@inherits <Foo>\n';
+      expect(Module.regexExtractInherits(input)).to.equal('Foo');
+    });
+  });
+
+  describe('regexExtractReturn', () => {
+    it('should return null when no return clause exists', () => {
+      const input = 'This has no return statement';
+      expect(Module.regexExtractReturn(input)).to.be.null;
+    });
+
+    it('should return a return object if a return clause exists', () => {
+      const input = 'The return is as follows:\n@return <string> description as follows';
+      expect(Module.regexExtractReturn(input)).to.deep.equal({
+        type: 'string',
+        desc: 'description as follows'
+      });
+    });
+  });
 });
