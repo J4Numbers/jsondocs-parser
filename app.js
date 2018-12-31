@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 /*
  * MIT License
  *
@@ -22,12 +23,6 @@
  * SOFTWARE.
  */
 
-const logger = require('./lib/logger')();
-const directoryScanner = require('./lib/directory_scan');
-const docExtractor = require('./lib/extract_basic_docs');
-const jsondocsGenerator = require('./lib/jsondocs_generator');
-const writeToFile = require('./lib/write_to_file');
-
 const argv = require('minimist')(
   process.argv.slice(2),
   {
@@ -40,13 +35,25 @@ const argv = require('minimist')(
       inc: ['.'],
       ext: ['.*[.].*'],
       ignore: [],
-      out: 'docs.jsondocs.json'
+      out: 'docs.jsondocs.json',
+      'log-level': 'info',
+      'doc-start': '\\[!',
+      'doc-end': '!\\]'
     }
   }
 );
 
+const logger = require('./lib/logger')({level: argv['log-level']});
+const directoryScanner = require('./lib/directory_scan');
+const docExtractor = require('./lib/extract_basic_docs');
+const jsondocsGenerator = require('./lib/jsondocs_generator');
+const writeToFile = require('./lib/write_to_file');
+
 if (typeof(argv.out) !== 'string') {
-  logger.error('Only one output option allowed');
+  logger.log('Only one output option allowed');
+  process.exit(1);
+}
+if (typeof(argv['log-level']) !== 'string') {
   process.exit(1);
 }
 
@@ -66,7 +73,7 @@ if (typeof(argv.ignore) !== 'object') {
 }
 
 let filesToScan = directoryScanner(argv.inc, argv.ext, argv.ignore);
-let matchesFound = docExtractor(filesToScan);
-let jsonDocs = jsondocsGenerator(matchesFound);
+let matchesFound = docExtractor(filesToScan, argv['doc-start'], argv['doc-end']);
+let jsonDocs = jsondocsGenerator(matchesFound, argv['doc-start'], argv['doc-end']);
 
 writeToFile(argv.out, jsonDocs);
